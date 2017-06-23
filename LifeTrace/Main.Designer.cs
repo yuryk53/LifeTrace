@@ -39,6 +39,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblRecordsCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnAttach = new System.Windows.Forms.Button();
+            this.btnLoadFBPost = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(157, 14);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(249, 20);
             this.dateTimePicker.TabIndex = 0;
             // 
             // label1
@@ -104,15 +105,16 @@
             this.txtComment.Location = new System.Drawing.Point(157, 95);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(200, 152);
+            this.txtComment.Size = new System.Drawing.Size(249, 152);
             this.txtComment.TabIndex = 5;
             // 
             // btnOK
             // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(81, 282);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(157, 282);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(218, 44);
+            this.btnOK.Size = new System.Drawing.Size(249, 44);
             this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -125,7 +127,7 @@
             this.lblRecordsCount});
             this.statusStrip1.Location = new System.Drawing.Point(0, 338);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(388, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(437, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -144,7 +146,7 @@
             // btnAttach
             // 
             this.btnAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAttach.Location = new System.Drawing.Point(246, 253);
+            this.btnAttach.Location = new System.Drawing.Point(295, 253);
             this.btnAttach.Name = "btnAttach";
             this.btnAttach.Size = new System.Drawing.Size(111, 23);
             this.btnAttach.TabIndex = 8;
@@ -152,11 +154,23 @@
             this.btnAttach.UseVisualStyleBackColor = true;
             this.btnAttach.Click += new System.EventHandler(this.btnAttach_Click);
             // 
+            // btnLoadFBPost
+            // 
+            this.btnLoadFBPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLoadFBPost.Location = new System.Drawing.Point(157, 253);
+            this.btnLoadFBPost.Name = "btnLoadFBPost";
+            this.btnLoadFBPost.Size = new System.Drawing.Size(83, 23);
+            this.btnLoadFBPost.TabIndex = 9;
+            this.btnLoadFBPost.Text = "Load from FB";
+            this.btnLoadFBPost.UseVisualStyleBackColor = true;
+            this.btnLoadFBPost.Click += new System.EventHandler(this.btnLoadFBPost_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 360);
+            this.ClientSize = new System.Drawing.Size(437, 360);
+            this.Controls.Add(this.btnLoadFBPost);
             this.Controls.Add(this.btnAttach);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnOK);
@@ -190,6 +204,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblRecordsCount;
         private System.Windows.Forms.Button btnAttach;
+        private System.Windows.Forms.Button btnLoadFBPost;
     }
 }
 

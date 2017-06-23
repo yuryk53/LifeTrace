@@ -54,8 +54,13 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -71,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacebookOauthDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacebookOauthDialog.Designer.cs">
+      <DependentUpon>FacebookOauthDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LifeTraceDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +101,9 @@
     <Compile Include="ShowAll.Designer.cs">
       <DependentUpon>ShowAll.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FacebookOauthDialog.resx">
+      <DependentUpon>FacebookOauthDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +130,7 @@
     <None Include="LifeTraceDBDataSet.xss">
       <DependentUpon>LifeTraceDBDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

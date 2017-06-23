@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-/*
+﻿/*
     This program is just a diary application.
     Copyright (C) 2016-2017  Yurii Bilyk
 
@@ -19,6 +16,9 @@ using System.ComponentModel;
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -30,7 +30,7 @@ using System.Data.SqlServerCe;
 using System.Globalization;
 
 using System.IO;
-
+using Facebook;
 
 namespace LifeTrace
 {
@@ -164,6 +164,55 @@ namespace LifeTrace
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void btnLoadFBPost_Click(object sender, EventArgs e)
+        {
+            FacebookOauthDialog fbDialog = new FacebookOauthDialog();
+            fbDialog.StartPosition = FormStartPosition.CenterScreen;
+            fbDialog.ShowDialog();
+
+            LoadLastPostFromFB(fbDialog.FacebookOAuthResult);
+        }
+
+        private void LoadLastPostFromFB(FacebookOAuthResult facebookOAuthResult)
+        {
+            if (facebookOAuthResult == null)
+            {
+                // the user closed the FacebookLoginDialog, so do nothing.
+                MessageBox.Show("Cancelled!");
+                return;
+            }
+
+            // Even though facebookOAuthResult is not null, it could had been an 
+            // OAuth 2.0 error, so make sure to check IsSuccess property always.
+            if (facebookOAuthResult.IsSuccess)
+            {
+                // since our respone_type in FacebookLoginDialog was token,
+                // we got the access_token
+                // The user now has successfully granted permission to our app.
+
+                //get last user post
+                var client = new FacebookClient();
+
+                client.AccessToken = facebookOAuthResult.AccessToken;
+                dynamic me = client.Get("me/?fields=id, posts.limit(1)");
+
+                string message = me.posts["data"][0]["message"];
+                DateTime date = DateTime.Parse(me.posts["data"][0]["created_time"]);
+
+                string accountId = me.id;
+
+                //MessageBox.Show($"{message}\n\nCreated time: {date}");
+                this.txtComment.Text = $"{message}\nSource: Facebook account id={accountId}";
+                this.dateTimePicker.Value = date;
+            }
+            else
+            {
+                // for some reason we failed to get the access token.
+                // most likely the user clicked don't allow.
+                MessageBox.Show(facebookOAuthResult.ErrorDescription);
+            }
         }
     }
 }

@@ -204,7 +204,7 @@ namespace LifeTrace
                 string accountId = me.id;
 
                 //MessageBox.Show($"{message}\n\nCreated time: {date}");
-                this.txtComment.Text = $"{message}\nSource: Facebook account id={accountId}";
+                this.txtComment.Text = $"{message}\r\nSource: Facebook account id={accountId}";
                 this.dateTimePicker.Value = date;
             }
             else
